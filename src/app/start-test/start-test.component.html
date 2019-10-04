@@ -1,0 +1,25 @@
+<header>
+    <ul class="list-group list-group-horizontal" *ngIf="user!==null && note!==null">
+        <li class="list-group-item">Connectée en tant que : <span> {{ user.email }}</span></li>
+        <li class="list-group-item">Note actuelle : <span>{{ note }} / 10</span></li>
+      </ul>
+</header>
+<main>                       
+            
+            <div *ngFor="let question of history; let index=index">
+                    <p>Question {{index+1}} : <small>{{ question.question[0] }} * {{ question.question[1] }}</small></p>
+                    <p>La bonne réponse était : {{ question.question[2] }}</p>
+                    <p>Votre réponse est : {{ question.result }}</p>                    
+            </div>
+
+            <app-current-question [question] = nextQuestion (sendResult) = refresh($event)></app-current-question>
+
+</main>
+<style>
+
+.hide{
+    display:none;
+}
+
+</style>
+

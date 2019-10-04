@@ -1,0 +1,38 @@
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Multiplicator</h3>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Bienvenue sur notre test de multiplications</h1>
+    <p class="lead">Pour commencer le test entrez un nom et appuyez sur le bouton "Lancez le test"</p>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Nom :</label>
+            <input formControlName="name" type="text" class="form-control"
+            id="name" aria-describedby="emailHelp" placeholder="Entrez votre nom ici">
+            <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">
+                        Le nom est recquis
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        Le nom doit comporter au moins 5 characteres
+                    </div>
+            </div>  
+        </div>
+        <p class="lead">
+            <button [disabled]="userForm.invalid" class="btn btn-lg btn-secondary" type="submit">Je commence le test !</button>
+        </p>
+    </form>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+
+  </footer>
+</div>
+
+
+</body>
